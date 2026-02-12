@@ -1,0 +1,16 @@
+class Solution:
+    def factorial(self, n):
+        digits = [1]
+        
+        for num in range(2, n + 1):
+            carry = 0
+            for i in range(len(digits)):
+                product = digits[i] * num + carry
+                digits[i] = product % 10
+                carry = product // 10
+            while carry:
+                digits.append(carry % 10)
+                carry //= 10
+        digits.reverse()
+        
+        return digits
